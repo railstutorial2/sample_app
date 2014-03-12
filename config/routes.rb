@@ -1,8 +1,9 @@
 SampleApp::Application.routes.draw do
 
+  
   root 'pages#home'
 
-
+  match '/signup', :to => 'users#new', via: :all
   match '/contact', :to => 'pages#contact', via: :all # via e metodot so koj se get ili post
   match '/about', :to => 'pages#about', via: :all
   match '/help', :to => 'pages#help', via: :all
