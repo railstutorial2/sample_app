@@ -2,9 +2,10 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.3'
-
+ gem 'gravatar_image_tag'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+gem 'devise', '3.0.0.rc'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -34,5 +35,7 @@ end
 
 group :development, :test do
 	gem 'rspec-rails', '2.14.1'
+	#gem 'anotate'
 	gem 'webrat'
+	gem 'factory_girl_rails', '4.2.1'
 end
