@@ -6,7 +6,7 @@ describe User do
 		@attr = {:name => "Example User", :email => "user@example.com", 
     :password => "foobar", :password_confirmation => "foobar"}
 	end	
-  it "should create a new instance given a valida attribute" do
+  it "should create a new instance given a valid attribute" do    
 	User.create!(@attr)
   end
 
@@ -43,7 +43,7 @@ describe User do
   	end
   end
 
-  it "should reject duplicate email addresses" do
+  it "should reject duplicate email addresses" do    
   	User.create!(@attr)
   	user_with_duplicate_email = User.new(@attr)
   	user_with_duplicate_email.should_not be_valid

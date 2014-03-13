@@ -6,6 +6,7 @@ gem 'rails', '4.0.3'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 gem 'devise', '3.0.0.rc'
+gem 'protected_attributes', '1.0.7'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -34,6 +35,7 @@ group :doc do
 end
 
 group :development, :test do
+	gem 'protected_attributes', '1.0.7'
 	gem 'rspec-rails', '2.14.1'
 	#gem 'anotate'
 	gem 'webrat'
