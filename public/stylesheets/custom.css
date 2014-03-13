@@ -139,3 +139,7 @@ td.sidebar {
 	margin-bottom: 10;
 >>>>>>> modeling-users
 }
+
+div.field, div.actions {
+	margin-bottom: 10px;
+}
