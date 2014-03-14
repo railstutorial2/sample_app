@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
     
   before_filter :authenticate, :only => [:edit, :update] # so before filter se pravi  povik na metod
+  before_filter :correct_user, :only => [:edit, :update]
 
   def new
   	@title = "Sign up"
@@ -29,6 +30,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+   # raise request.inspect
     @user = User.find(params[:id])
     @title = "Edit user"
   end
@@ -47,8 +49,14 @@ class UsersController < ApplicationController
   private 
 
     def authenticate
+      session[:return_to] = request.fullpath # od kade sme dojdeni !!
       flash[:notice] = "You need to sign in to see this page"
       redirect_to signin_path unless signed_in?
+    end
+
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_path) unless current_user?(@user)
     end
 
 
