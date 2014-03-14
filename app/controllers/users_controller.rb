@@ -1,8 +1,14 @@
 class UsersController < ApplicationController
     
-  before_filter :authenticate, :only => [:edit, :update] # so before filter se pravi  povik na metod
+  before_filter :authenticate, :only => [:index, :edit, :update] # so before filter se pravi  povik na metod
   before_filter :correct_user, :only => [:edit, :update]
 
+
+
+  def index
+    @users = User.all
+    @title = "All users"
+  end
   def new
   	@title = "Sign up"
   	@user = User.new
@@ -50,7 +56,7 @@ class UsersController < ApplicationController
 
     def authenticate
       session[:return_to] = request.fullpath # od kade sme dojdeni !!
-      flash[:notice] = "You need to sign in to see this page"
+      flash[:notice] = "You need to sign in to see this page" unless signed_in?
       redirect_to signin_path unless signed_in?
     end
 
