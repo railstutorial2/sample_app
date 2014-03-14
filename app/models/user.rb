@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 	attr_accessor :password  # factorygirl sets this attr_accessor, zatoa e taa linija
-	attr_accessible :name, :email, :password, :password_confirmation
+	attr_accessible :name, :email, :password, :password_confirmation#, :admin
 	#attr_accessible :name, :email  // ova e loso iam problemi nekoi
 	validates_presence_of :name, :email
 	validates :name, :length => { :maximum => 50}
