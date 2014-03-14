@@ -40,4 +40,6 @@ group :development, :test do
 	#gem 'anotate'
 	gem 'webrat'
 	gem 'factory_girl_rails', '4.2.1'
+	gem 'faker', '1.3.0'
+	gem 'will_paginate', '3.0.5'
 end
