@@ -39,4 +39,12 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+
+  #def test_sign_in(user)
+    #controller.current_user = user
+ # end
+
+  def test_sign_in(user)
+    controller.sign_in(user)
+  end
 end
