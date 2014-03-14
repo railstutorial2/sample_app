@@ -13,7 +13,8 @@ class SessionsController < ApplicationController
   	#	flash[:notice] = "Wrong login"
   	#	redirect_to signin_path     // ovie dve linii se isto kako prvite dve linii gore
   	else
-  	
+  	 sign_in user
+     redirect_to user_path(user) # ili user samo
   	end
   end
 

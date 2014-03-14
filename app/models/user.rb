@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-	attr_accessor :password
+	attr_accessor :password  # factorygirl sets this attr_accessor, zatoa e taa linija
 	attr_accessible :name, :email, :password, :password_confirmation
 	#attr_accessible :name, :email  // ova e loso iam problemi nekoi
 	validates_presence_of :name, :email
@@ -17,11 +17,17 @@ class User < ActiveRecord::Base
    def has_password?(submitted_password)
      encrypted_password == encrypt(submitted_password)
    end
-
+        # self. e KLASEN METOD
    def self.authenticate(email, submitted_password)
      user = find_by_email(email)
-     return nil if user.nil?
-     return user if user.has_password?(submitted_password)
+     (user && user.has_password?(submitted_password)) ? user : nil # isto kako dolnite 2
+  #   return nil if user.nil?
+  #   return user if user.has_password?(submitted_password)
+   end
+
+   def self.authenticate_with_salt(id, cookie_salt)
+     user = find_by_id(id)
+     (user && user.salt == cookie_salt) ? user : nil  
    end
 
    private
