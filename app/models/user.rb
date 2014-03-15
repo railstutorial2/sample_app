@@ -1,7 +1,24 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                 :integer          not null, primary key
+#  name               :string(255)
+#  email              :string(255)
+#  created_at         :datetime
+#  updated_at         :datetime
+#  encrypted_password :string(255)
+#  salt               :string(255)
+#  admin              :boolean          default(FALSE)
+#
+
 class User < ActiveRecord::Base
 	attr_accessor :password  # factorygirl sets this attr_accessor, zatoa e taa linija
 	attr_accessible :name, :email, :password, :password_confirmation#, :admin
-	#attr_accessible :name, :email  // ova e loso iam problemi nekoi
+
+  has_many :microposts, :dependent => :destroy # toa znaci deka microposts ke zavisat i koga ke s unisti
+                                                # user se unistuvaat i soodvetnite microposts !!
+
 	validates_presence_of :name, :email
 	validates :name, :length => { :maximum => 50}
 	validates :email, :format => { with: /\A[\w+.\-]+@[a-z.\-\d]+\.[a-z]+\z/i} 

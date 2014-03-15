@@ -39,7 +39,8 @@ group :development, :test do
 	gem 'rspec-rails', '2.14.1'
 	#gem 'anotate'
 	gem 'webrat'
-	gem 'factory_girl_rails', '4.2.1'
+	gem 'factory_girl_rails', '4.2.1'#, :require => false
 	gem 'faker', '1.3.0'
 	gem 'will_paginate', '3.0.5'
+	gem 'annotate', ">=2.6.0"
 end
