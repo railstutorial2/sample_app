@@ -16,6 +16,12 @@ module SessionsHelper
 		user == current_user
 	end
 
+	 def authenticate
+      session[:return_to] = request.fullpath # od kade sme dojdeni !!
+      flash[:notice] = "You need to sign in to see this page" unless signed_in?
+      redirect_to signin_path unless signed_in?
+    end
+
 	def deny_access
 		store_location
 		redirect_to signin_path, :notice => "Please sign in to access this page."

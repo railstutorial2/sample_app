@@ -3,7 +3,8 @@ SampleApp::Application.routes.draw do
   
   
   root 'pages#home'
-  resource :sessions, :only => [:new, :create, :destroy]
+  resources :sessions, :only => [:new, :create, :destroy]
+  resources :microposts, :only => [:create, :destroy]
 
   match '/signup', :to => 'users#new', via: :all
   match '/contact', :to => 'pages#contact', via: :all # via e metodot so koj se get ili post

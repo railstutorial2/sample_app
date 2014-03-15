@@ -61,11 +61,7 @@ class UsersController < ApplicationController
 
   private 
 
-    def authenticate
-      session[:return_to] = request.fullpath # od kade sme dojdeni !!
-      flash[:notice] = "You need to sign in to see this page" unless signed_in?
-      redirect_to signin_path unless signed_in?
-    end
+   
 
     def correct_user
       @user = User.find(params[:id])
