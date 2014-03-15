@@ -5,12 +5,21 @@ SampleApp::Application.routes.draw do
   root 'pages#home'
   resources :sessions, :only => [:new, :create, :destroy]
   resources :microposts, :only => [:create, :destroy]
+  resources :relationships, :only => [:create, :destroy]
 
   match '/signup', :to => 'users#new', via: :all
   match '/contact', :to => 'pages#contact', via: :all # via e metodot so koj se get ili post
   match '/about', :to => 'pages#about', via: :all
   match '/help', :to => 'pages#help', via: :all
-  resources :users  
+
+  resources :users do # adds routes for /users/1/following i /users/1/followers
+    member do         # dava named route following_user_path(1) i followers_user_path(brojka)
+      get :following, :followers
+    end
+  end
+
+
+
   match '/signin', :to => 'sessions#new', via: :all
   match '/signout', :to => 'sessions#destroy', via: :all
   # The priority is based upon order of creation: first created -> highest priority.
